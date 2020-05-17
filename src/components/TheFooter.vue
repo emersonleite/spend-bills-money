@@ -2,7 +2,9 @@
   <div class="theFooter">
     <div class="theFooter__ad">
       <p>You may also like</p>
-      <img src="../assets/ad.jpg" alt />
+      <div>
+        <img src="../assets/ad.jpg" alt />
+      </div>
     </div>
     <p class="theFooter__copyright">
       Made with ❤️ by
