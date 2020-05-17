@@ -4,8 +4,6 @@
       <div>
         <img :src="`/img/${item.src}.jpg`" class="itemsList__image" :alt="item.name" />
       </div>
-      <!-- Outra opção carregando imagens -->
-      <ImgItem :source="item.src" />
       <h2 class="itemsList__name">{{item.name}}</h2>
       <p class="itemsList__cost">{{item.cost | toDollar}}</p>
       <CommandButtons
@@ -21,11 +19,9 @@
  <script>
 import { mapState } from "vuex";
 import CommandButtons from "./CommandButtons.vue";
-import ImgItem from "./ImgItem.vue";
 export default {
   components: {
-    CommandButtons,
-    ImgItem
+    CommandButtons
   },
   name: "ItemsList",
   computed: {
