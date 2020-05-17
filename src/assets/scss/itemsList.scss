@@ -1,0 +1,35 @@
+.itemsList {
+    color: $black;
+    display: grid;
+    font-family: $fonte-primaria;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: $max-width;
+    margin: 0 auto;
+    .itemsList__list {
+        background: white;
+        padding: 20px 15px;
+        width: 100%;
+    }
+    .itemsList__name,
+    .itemsList__cost {
+        text-align: center;
+    }
+    .itemsList__name {
+        font-size: 22px;
+        font-weight: bold;
+    }
+    div {
+        text-align: center;
+        .itemsList__image {
+            height: 135px;
+            text-align: center;
+            padding: 15px 10px 10px;
+        }
+    }
+    .itemsList__cost {
+        color: $green;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}

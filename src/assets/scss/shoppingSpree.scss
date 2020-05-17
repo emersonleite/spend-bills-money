@@ -1,0 +1,44 @@
+.shoppingSpree {
+    max-width: $max-width;
+    margin: 10px auto 0;
+    text-align: center;
+    background-color: white;
+    font-size: 18px;
+    padding: 15px;
+    .shoppingSpree__image {
+        max-height: 50px;
+        max-width: 50px;
+        margin-right: 7px;
+        display: inline;
+    }
+    .shoppingSpree__title {
+        background-color: white;
+        color: $green;
+        font-weight: bold;
+        font-family: $fonte-primaria;
+        font-size: 28px;
+        text-align: center;
+        padding: 15px;
+    }
+    .shoppingSpree__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 0;
+        .shoppingSpree__item {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .shoppingSpree__name,
+            .shoppingSpree__amount {
+                font-family: $fonte-primaria;
+                font-size: 16px;
+                display: inline;
+            }
+            .shoppingSpree__amount {
+                font-weight: bold;
+                margin-left: 5px;
+            }
+        }
+    }
+};

@@ -1,0 +1,49 @@
+@mixin buttons {
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    border-style: none;
+    width: 67px;
+    & disabled {
+        background-color: $grey;
+    }
+}
+
+.commandButtons {
+    display: grid;
+    font-size: 20px;
+    font-weight: bold;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 25px;
+    .commandButtons__buttonSell {
+        @include buttons;
+        background-color: $red;
+    }
+    .commandButtons__buttonBuy {
+        @include buttons;
+        background-color: $green;
+    }
+    .commandButtons__input {
+        border-radius: 3px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(178, 190, 195);
+        color: $black;
+        font-size: 16px;
+        font-family: $fonte-primaria;
+        padding: 9px 12px;
+        text-align: center;
+        width: 126px;
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .commandButtons__buttonSell--disabled {
+        background: $grey;
+        color: $black;
+    }
+}

@@ -1,0 +1,32 @@
+.theFooter {
+    background-color: white;
+    font-family: $fonte-primaria;
+    margin-top: 10px;
+    padding: 30px 20px 45px;
+    text-align: center;
+    .theFooter__ad {
+        font-size: 22px;
+        font-weight: bold;
+        color: $black;
+        img {
+            max-width: 920px;
+        }
+    }
+    .theFooter__copyright {
+        font-size: 18px;
+        color: $black;
+        font-weight: bold;
+        margin-bottom: 20px;
+        a {
+            color: $black;
+        }
+    }
+    .theFooter__link {
+        font-size: 26px;
+        font-weight: 700;
+        a {
+            text-decoration: none;
+            color: $black;
+        }
+    }
+}

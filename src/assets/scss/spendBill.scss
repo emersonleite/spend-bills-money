@@ -1,0 +1,20 @@
+.spendBill {
+    background: white;
+    text-align: center;
+    margin: 0 auto 10px;
+    padding: 30px 20px;
+    max-width: $max-width;
+    .spendBill__image {
+        border-radius: 50%;
+        width: 125px;
+        height: 125px;
+        margin-bottom: 25px;
+    }
+    .spendBill__title {
+        color: $black;
+        font-family: $fonte-primaria;
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 1.6em;
+    }
+}

@@ -1,0 +1,19 @@
+.theHeader {
+    background: white;
+    margin-bottom: 25px;
+    padding: 30px 0;
+    .theHeader__container {
+        max-width: 950px;
+        margin: 0 auto;
+    }
+    .theHeader__logo {
+        font-family: $fonte-primaria;
+        font-size: 30px;
+        font-weight: bold;
+        padding-left: 15px;
+        a {
+            text-decoration: none;
+            color: $black;
+        }
+    }
+}
