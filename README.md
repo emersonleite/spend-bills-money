@@ -1,4 +1,6 @@
-### Segue o código do desafio proposto.
+### Bom dia! 
+
+Segue o código do desafio proposto.
 
 Espero uma oportunidade de mostrar meu trabalho.
 
