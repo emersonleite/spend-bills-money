@@ -8,7 +8,7 @@
     >Sell</button>
     <input class="commandButtons__input" @change="inputChanged" type="text" v-model="inputValue" />
     <button
-      :class="{'commandButtons__buttonSell--disabled': inputValue >= limit}"
+      :class="{'commandButtons__buttonSell--disabled': inputValue >= limit || negative}"
       class="commandButtons__buttonBuy"
       :disabled="inputValue >= limit"
       @click="toBuy"
@@ -25,7 +25,8 @@ export default {
   props: ["cost", "limit", "amount", "indexItem"],
   data() {
     return {
-      inputValue: 0
+      inputValue: 0,
+      negative: false
     };
   },
   computed: {
@@ -80,7 +81,12 @@ export default {
     toBuy() {
       this.$store.commit("UPDATE_AMOUNT_UP", this.indexItem);
       this.$store.dispatch("updateMoney", this.moneySpend);
-      this.inputValue++;
+      console.log(this.moneySpend);
+      if (this.moneySpend >= BillsMoney) {
+        this.negative = true;
+      } else {
+        this.inputValue++;
+      }
     }
   }
 };
