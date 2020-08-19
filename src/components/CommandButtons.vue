@@ -28,7 +28,6 @@ export default {
   },
   computed: {
     ...mapState(["moneyLeft", "arrayItems", "BillsMoney"]),
-    /* Calculo do total gasto até o momento */
     moneySpend() {
       const total = this.arrayItems.reduce((acc, item) => {
         return acc + item.cost * item.amount;
@@ -71,20 +70,15 @@ export default {
     toSell() {
       this.UPDATE_AMOUNT_DOWN(this.indexItem);
       this.updateMoney(this.moneySpend);
-      console.log(this.moneySpend);
       this.inputValue--;
     },
     toBuy() {
       if (this.cost <= this.moneyLeft) {
         this.UPDATE_AMOUNT_UP(this.indexItem);
         this.updateMoney(this.moneySpend);
-        console.log(this.moneySpend);
         this.inputValue++;
       }
     },
   },
 };
 </script>
- 
- <style>
-</style>

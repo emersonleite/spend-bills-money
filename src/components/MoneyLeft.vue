@@ -9,10 +9,7 @@ import { mapState } from "vuex";
 export default {
   name: "MoneyLeft",
   computed: {
-    ...mapState(["moneyLeft"])
-  }
+    ...mapState(["moneyLeft"]),
+  },
 };
 </script>
- 
- <style lang="scss">
-</style>

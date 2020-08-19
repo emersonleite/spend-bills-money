@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-/* import { BillsMoney } from "@/main.js"; */
 
 Vue.use(Vuex);
 

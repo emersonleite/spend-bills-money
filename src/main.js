@@ -4,8 +4,6 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
-/* export const BillsMoney = 90000000000; */
-
 Vue.filter("toDollar", (valor) => {
   valor = Number(valor);
   if (!isNaN(valor)) {

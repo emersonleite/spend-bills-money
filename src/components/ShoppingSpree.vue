@@ -22,10 +22,7 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["arrayItems", "moneyLeft"])
-  }
+    ...mapState(["arrayItems", "moneyLeft"]),
+  },
 };
 </script>
- 
- <style>
-</style>

@@ -21,14 +21,11 @@ import { mapState } from "vuex";
 import CommandButtons from "./CommandButtons.vue";
 export default {
   components: {
-    CommandButtons
+    CommandButtons,
   },
   name: "ItemsList",
   computed: {
-    ...mapState(["arrayItems"])
-  }
+    ...mapState(["arrayItems"]),
+  },
 };
 </script>
- 
- <style>
-</style>
