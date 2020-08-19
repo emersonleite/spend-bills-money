@@ -8,7 +8,7 @@
     >Sell</button>
     <input class="commandButtons__input" @change="inputChanged" type="text" v-model="inputValue" />
     <button
-      :class="{'commandButtons__buttonSell--disabled': inputValue >= limit}"
+      :class="{'commandButtons__buttonSell--disabled': inputValue >= limit || negative}"
       class="commandButtons__buttonBuy"
       :disabled="inputValue >= limit"
       @click="toBuy"
@@ -17,24 +17,27 @@
 </template>
  
  <script>
-import { mapState, mapActions, mapMutations } from "vuex";
+import { mapState } from "vuex";
+import { mapActions } from "vuex";
+import { BillsMoney } from "@/main.js";
 export default {
   name: "CommandButtons",
   props: ["cost", "limit", "amount", "indexItem"],
   data() {
     return {
       inputValue: 0,
+      negative: false,
     };
   },
   computed: {
-    ...mapState(["moneyLeft", "arrayItems", "BillsMoney"]),
+    ...mapState(["moneyLeft", "arrayItems"]),
     /* Calculo do total gasto até o momento */
     moneySpend() {
       const total = this.arrayItems.reduce((acc, item) => {
         return acc + item.cost * item.amount;
       }, 0);
-      if (total > this.BillsMoney) {
-        return this.BillsMoney;
+      if (total > BillsMoney) {
+        return BillsMoney;
       } else {
         return total;
       }
@@ -48,37 +51,40 @@ export default {
   },
   methods: {
     ...mapActions(["updateMoney"]),
-    ...mapMutations([
-      "UPDATE_AMOUNT_CHANGE",
-      "UPDATE_AMOUNT_DOWN",
-      "UPDATE_AMOUNT_UP",
-    ]),
+    /* moneySpend2() {
+      const total = this.arrayItems.reduce((acc, item) => {
+        return acc + item.cost * item.amount;
+      }, 0);
+      if (total > BillsMoney) {
+        return BillsMoney;
+      } else {
+        return total;
+      }
+    }, */
     inputChanged() {
-      if (
-        Number(this.inputValue) * this.cost >
-        this.BillsMoney - this.moneySpend
-      ) {
+      if (Number(this.inputValue) * this.cost > BillsMoney - this.moneySpend) {
         this.inputValue = Math.floor(
-          (this.BillsMoney - this.moneySpend) / this.cost
+          (BillsMoney - this.moneySpend) / this.cost
         );
       }
       if (this.inputValue > this.limit) {
         this.inputValue = this.limit;
       }
-      this.UPDATE_AMOUNT_CHANGE(this.dataItem);
-      this.updateMoney(this.moneySpend);
+      this.$store.commit("UPDATE_AMOUNT_CHANGE", this.dataItem);
+      this.$store.dispatch("updateMoney", this.moneySpend);
     },
     toSell() {
-      this.UPDATE_AMOUNT_DOWN(this.indexItem);
-      this.updateMoney(this.moneySpend);
-      console.log(this.moneySpend);
+      this.$store.commit("UPDATE_AMOUNT_DOWN", this.indexItem);
+      this.$store.dispatch("updateMoney", this.moneySpend);
       this.inputValue--;
     },
     toBuy() {
-      if (this.cost <= this.moneyLeft) {
-        this.UPDATE_AMOUNT_UP(this.indexItem);
-        this.updateMoney(this.moneySpend);
-        console.log(this.moneySpend);
+      this.$store.commit("UPDATE_AMOUNT_UP", this.indexItem);
+      this.$store.dispatch("updateMoney", this.moneySpend);
+      console.log(this.moneySpend);
+      if (this.moneySpend >= BillsMoney) {
+        this.negative = true;
+      } else {
         this.inputValue++;
       }
     },

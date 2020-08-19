@@ -1,11 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { BillsMoney } from "@/main.js";
+/* import { BillsMoney } from "@/main.js"; */
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    BillsMoney: 90000000000,
     moneyLeft: 90000000000,
     spree: false,
     arrayItems: [
@@ -99,7 +100,7 @@ export default new Vuex.Store({
   },
   mutations: {
     UPDATE_MONEY(state, payload) {
-      state.moneyLeft = BillsMoney - payload;
+      state.moneyLeft = state.BillsMoney - payload;
     },
     UPDATE_AMOUNT_UP(state, payload) {
       state.arrayItems[payload].amount++;
